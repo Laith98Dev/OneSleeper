@@ -1,0 +1,6 @@
+name: OneSleeper
+api: [3.0.0]
+version: 1.0.0
+main: Laith98Dev\OneSleeper\Main
+description: Only one player on the server will need to sleep to set day.
+author: Laith98Dev
