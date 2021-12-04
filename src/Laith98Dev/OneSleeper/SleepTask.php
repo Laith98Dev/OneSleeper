@@ -33,7 +33,7 @@ namespace Laith98Dev\OneSleeper;
  * 	
  */
 
-use pocketmine\level\Level;
+use pocketmine\world\World;
 use pocketmine\scheduler\Task;
 
 class SleepTask extends Task {
@@ -41,20 +41,20 @@ class SleepTask extends Task {
 	/** @var Main */
 	private $plugin;
 	
-	/** @var Level */
+	/** @var World */
 	private $level;
 	
-	public function __construct(Main $plugin, Level $level){
+	public function __construct(Main $plugin, World $level){
 		$this->plugin = $plugin;
 		$this->level = $level;
 	}
 	
-	public function onRun(int $tick){
+	public function onRun(): void{
 		$level = $this->level;
 		$time = $level->getTimeOfDay();
 		
-		if($time >= Level::TIME_NIGHT && $time < Level::TIME_SUNRISE){
-			$level->setTime($level->getTime() + Level::TIME_FULL - $time);
+		if($time >= World::TIME_NIGHT && $time < World::TIME_SUNRISE){
+			$level->setTime($level->getTime() + World::TIME_FULL - $time);
 
 			foreach($level->getPlayers() as $p){
 				$p->stopSleep();
