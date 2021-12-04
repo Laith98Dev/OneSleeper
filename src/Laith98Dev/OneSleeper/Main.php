@@ -48,6 +48,6 @@ class Main extends PluginBase implements Listener {
 	
 	public function onBedEnter(PlayerBedEnterEvent $event){
 		$player = $event->getPlayer();
-		$this->getScheduler()->scheduleRepeatingTask(new SleepTask($this, $player->getWorld()), 20 * 3);
+		$this->getScheduler()->scheduleRepeatingTask(new SleepTask($player->getWorld()), 20 * 3);
 	}
 }
