@@ -38,14 +38,10 @@ use pocketmine\scheduler\Task;
 
 class SleepTask extends Task {
 	
-	/** @var Main */
-	private $plugin;
-	
 	/** @var World */
 	private $level;
 	
-	public function __construct(Main $plugin, World $level){
-		$this->plugin = $plugin;
+	public function __construct(World $level){
 		$this->level = $level;
 	}
 	
