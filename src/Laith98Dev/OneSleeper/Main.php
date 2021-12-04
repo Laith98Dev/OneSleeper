@@ -35,19 +35,19 @@ namespace Laith98Dev\OneSleeper;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\level\Level;
 use pocketmine\scheduler\Task;
 use pocketmine\event\player\PlayerBedEnterEvent;
 
 class Main extends PluginBase implements Listener {
 	
-	public function onEnable() {
+	public function onEnable(): void {
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 	
 	public function onBedEnter(PlayerBedEnterEvent $event){
 		$player = $event->getPlayer();
-		$this->getScheduler()->scheduleRepeatingTask(new SleepTask($this, $player->getLevel()), 20 * 3);
+		$this->getScheduler()->scheduleRepeatingTask(new SleepTask($this, $player->getWorld()), 20 * 3);
 	}
 }
